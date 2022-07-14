@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>lastSuica</title>
+    <link rel="stylesheet" href="Suica.css" />
+</head>
+
+<body>
+    <div id="app">
+        <img v-bind:src="path" alt="ロゴ画像" v-on:mouseenter="onmouseenter" v-on:mouseleave="onmouseleave" />
+        <label for="name">チャージ金額</label>
+        <input type="text" id="memo" v-model.number="charge" />
+        <button v-on:click="onclick">チャージ</button><br>
+        <label>出発駅</label>
+        <!--<input type="text" v-model.trim="from" v-on:change="onchangeFrom" />
+        <select name="example">
+          <option v-for="station in stationListFrom" >{{station}}</option>
+          </select>
+        -->
+        <div class="example">
+            <table>
+                <tr>
+                    <th> <input type="text" v-model.trim="from" v-on:change="onchangeFrom" /></th>
+
+                </tr>
+                <tr v-for="stationFrom in stationListFrom">
+                    <th v-on:click="onclickFrom(stationFrom)">{{stationFrom}}</th>
+                </tr>
+            </table>
+        </div>
+        <div class="example">
+            <table>
+                <tr>
+                    <th> <input type="text" v-model.trim="to" v-on:change="onchangeTo" /></th>
+
+                </tr>
+                <tr v-for="stationTo in stationListTo">
+                    <th v-on:click="onclickTo(stationTo)">{{stationTo}}</th>
+                </tr>
+            </table>
+        </div>
+        <p>残 高:{{ money }}円</p>
+    </div>
+    <input type="button" v-on:click="searchFare" value="検索">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.29/dist/vue.global.js"></script>
+    <script src="Suica.js"></script>
+</body>
+
+</html>
