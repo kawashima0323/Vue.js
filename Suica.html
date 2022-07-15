@@ -30,6 +30,7 @@
                 </tr>
             </table>
         </div>
+        <label>到着駅</label>
         <div class="example">
             <table>
                 <tr>
@@ -45,7 +46,7 @@
         <input type="button" v-on:click="searchFare" value="検索">
         <!--
             経路探索をして何を表示したいのか
-            運賃
+            片道運賃　response.data.ResultSet.Course[0].Price[0].Oneway
             出発駅
             到着駅
             乗り換え

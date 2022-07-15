@@ -8,12 +8,11 @@ Vue.createApp({
             stationListFrom: [],
             stationListTo: [],
             station: [],
+            price: 0,
             path: 'https://www.izukyu.co.jp/assets/images/guide/suica/suica_normal.jpg'
         };
     },
-    computed: {
-        //money: function() { return this.money2 + this.charge },
-    },
+
     //チャージ
     methods: {
         onclick() {
@@ -22,13 +21,10 @@ Vue.createApp({
         //検索してものをクリックしたら反映される
         onclickFrom(stationFrom) {
             this.from = stationFrom;
-            console.log(this.from);
         },
         onclickTo(stationTo) {
             console.log("クリックされました。");
-            console.log(stationTo);
             this.to = stationTo;
-            console.log(this.to);
         },
 
         onchangeFrom(e) {
@@ -43,7 +39,6 @@ Vue.createApp({
                     cnt = 0;
                     response.data.ResultSet.Point.forEach(element => {
                         this.stationListFrom[cnt++] = element.Station.Name;
-                        console.log(element.Station.Name)
                     });
 
 
@@ -86,9 +81,9 @@ Vue.createApp({
                 .then(function(response) {
                     //通信に成功した時の処理
                     //responseの中に返ってきたオブジェクトが入ってる。
-                    cnt = 0;
 
-                    console.log(response);
+                    //片道運賃
+                    console.log("結果" + response.data.ResultSet.Course[0].Price[0].Oneway);
                 }.bind(this))
                 .catch(function(error) {
                     //エラーをキャッチした時。
