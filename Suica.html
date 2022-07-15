@@ -43,6 +43,17 @@
         </div>
         <p>残 高:{{ money }}円</p>
         <input type="button" v-on:click="searchFare" value="検索">
+        <!--
+            経路探索をして何を表示したいのか
+            運賃
+            出発駅
+            到着駅
+            乗り換え
+            出発時刻
+            到着時刻
+            かかる時間
+            乗り換え回数　ResultSet / Course / Route / transferCount
+        -->
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
