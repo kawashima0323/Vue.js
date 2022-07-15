@@ -82,7 +82,7 @@ Vue.createApp({
 
         searchFare(e) {
 
-            axios.get("https://api.ekispert.jp/v1/json/station/light?key=test_pBj5M9pAwM6&type=train&nameMatchType=partial&viaList=" + this.from + ":" + this.to)
+            axios.get("https://api.ekispert.jp/v1/json/search/course/extreme?key=test_pBj5M9pAwM6&viaList=" + this.from + ":" + this.to)
                 .then(function(response) {
                     //通信に成功した時の処理
                     //responseの中に返ってきたオブジェクトが入ってる。
