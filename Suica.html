@@ -23,7 +23,6 @@
             <table>
                 <tr>
                     <th> <input type="text" v-model.trim="from" v-on:change="onchangeFrom" /></th>
-
                 </tr>
                 <tr v-for="stationFrom in stationListFrom">
                     <th v-on:click="onclickFrom(stationFrom)">{{stationFrom}}</th>
@@ -35,7 +34,6 @@
             <table>
                 <tr>
                     <th> <input type="text" v-model.trim="to" v-on:change="onchangeTo" /></th>
-
                 </tr>
                 <tr v-for="stationTo in stationListTo">
                     <th v-on:click="onclickTo(stationTo)">{{stationTo}}</th>
@@ -49,14 +47,15 @@
             片道運賃　response.data.ResultSet.Course[0].Price[0].Oneway
             出発駅
             到着駅
-            乗り換え
-            出発時刻
-            到着時刻
-            かかる時間
-            乗り換え回数　ResultSet / Course / Route / transferCount
+            出発駅-何路線-到着駅　(例)横芝--ＪＲ総武本線--千葉 response.data.ResultSet.Course[0].Teiki.DisplayRoute
+            乗車時間の合計(分) response.data.ResultSet.Course[0].Route.timeWalk
+            乗り換え回数 response.data.ResultSet.Course[0].Route.transferCount
+            停車駅数　response.data.ResultSet.Course[0].Route.Line.stopStationCount
+            路線記号 (例)JO,JY　response.data.ResultSet.Course[0].Route.Line.LineSymbol.Name
+            路線名称　(例)ＪＲ総武本線・千葉行 response.data.ResultSet.Course[0].Route.Line.Name
+            fa
         -->
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.29/dist/vue.global.js"></script>
     <script src="Suica.js"></script>

@@ -12,7 +12,6 @@ Vue.createApp({
             path: 'https://www.izukyu.co.jp/assets/images/guide/suica/suica_normal.jpg'
         };
     },
-
     //チャージ
     methods: {
         onclick() {
@@ -26,7 +25,6 @@ Vue.createApp({
             console.log("クリックされました。");
             this.to = stationTo;
         },
-
         onchangeFrom(e) {
             //URLに向けて通信する。t5
             this.stationListFrom = [];
@@ -40,8 +38,6 @@ Vue.createApp({
                     response.data.ResultSet.Point.forEach(element => {
                         this.stationListFrom[cnt++] = element.Station.Name;
                     });
-
-
                     console.log()
                 }.bind(this))
                 .catch(function(error) {
@@ -72,18 +68,15 @@ Vue.createApp({
                 .finally(function() {
                     //ファイナリーです。
                 });
-
         },
-
         searchFare(e) {
-
             axios.get("https://api.ekispert.jp/v1/json/search/course/extreme?key=test_pBj5M9pAwM6&viaList=" + this.from + ":" + this.to)
                 .then(function(response) {
-                    //通信に成功した時の処理
+                    //通信に成功した時の処理fdfdfss
                     //responseの中に返ってきたオブジェクトが入ってる。
-
                     //片道運賃
-                    console.log("結果" + response.data.ResultSet.Course[0].Price[0].Oneway);
+                    console.log("運賃:" + response.data.ResultSet.Course[0].Price[0].Oneway);
+                    console.log("停車駅:" + response.data.ResultSet.Course[0].Teiki.DisplayRoute);
                 }.bind(this))
                 .catch(function(error) {
                     //エラーをキャッチした時。
@@ -92,7 +85,6 @@ Vue.createApp({
                 .finally(function() {
                     //ファイナリーです。
                 });
-
         },
         onmouseenter() {
             this.path = 'https://kfm.sakura.ne.jp/piceb/13nre/nresuicapenblbzoom.jpg';
