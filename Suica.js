@@ -77,6 +77,13 @@ Vue.createApp({
                     //片道運賃
                     console.log("運賃:" + response.data.ResultSet.Course[0].Price[0].Oneway);
                     console.log("停車駅:" + response.data.ResultSet.Course[0].Teiki.DisplayRoute);
+                    console.log("時刻:" + response.data.ResultSet.Course[0].Route.Line.DepartureState.Datetime.text);
+                    str = response.data.ResultSet.Course[0].Route.Line.DepartureState.Datetime.text;
+                    beginIdx = str.indexOf("T");
+                    endIdx = str.indexOf(":");
+                    result = str.substring(beginIdx + 1, endIdx + 3);
+                    console.log(result);
+
                 }.bind(this))
                 .catch(function(error) {
                     //エラーをキャッチした時。
